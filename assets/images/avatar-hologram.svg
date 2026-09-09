@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <radialGradient id="avatarGlow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.9" />
+      <stop offset="35%" stop-color="#4FACFE" stop-opacity="0.6" />
+      <stop offset="70%" stop-color="#000D1A" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#020813" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="scanlineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.3" />
+      <stop offset="50%" stop-color="#00F2FE" stop-opacity="0.05" />
+      <stop offset="100%" stop-color="#00F2FE" stop-opacity="0.3" />
+    </linearGradient>
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+    <filter id="holoBlur">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background circle with dark cyan holographic field -->
+  <circle cx="250" cy="250" r="240" fill="url(#avatarGlow)" stroke="#00F2FE" stroke-width="3" stroke-dasharray="8 6" />
+
+  <!-- Holographic Grid rings -->
+  <circle cx="250" cy="250" r="220" fill="none" stroke="#00F2FE" stroke-width="1" opacity="0.3" />
+  <circle cx="250" cy="250" r="190" fill="none" stroke="#4FACFE" stroke-width="1.5" stroke-dasharray="14 10" opacity="0.5" />
+  <circle cx="250" cy="250" r="160" fill="none" stroke="#00F2FE" stroke-width="1" opacity="0.2" />
+
+  <!-- Avatar Bust Silhouette (Tony, 52, warm kind fatherly posture) -->
+  <g filter="url(#holoBlur)">
+    <!-- Shoulders & Upper Torso -->
+    <path d="M 120,410 C 130,340 180,315 220,305 L 280,305 C 320,315 370,340 380,410 C 340,430 250,440 120,410 Z" fill="url(#accentCyan)" opacity="0.85" />
+
+    <!-- Collar / Shirt Detail -->
+    <path d="M 220,305 L 250,345 L 280,305" fill="none" stroke="#E0F7FA" stroke-width="3" />
+
+    <!-- Neck -->
+    <rect x="232" y="270" width="36" height="40" fill="url(#accentCyan)" opacity="0.9" />
+
+    <!-- Head -->
+    <ellipse cx="250" cy="210" rx="60" ry="72" fill="url(#accentCyan)" opacity="0.95" />
+
+    <!-- Hair (Side-parted, neat fatherly hair) -->
+    <path d="M 190,195 C 190,140 220,130 250,130 C 290,130 315,150 315,190 C 310,165 285,150 250,150 C 215,150 195,175 190,195 Z" fill="#E0F7FA" opacity="0.9" />
+
+    <!-- Gentle smiling expression cues / Glasses -->
+    <rect x="210" y="195" width="32" height="22" rx="6" fill="none" stroke="#E0F7FA" stroke-width="3.5" />
+    <rect x="258" y="195" width="32" height="22" rx="6" fill="none" stroke="#E0F7FA" stroke-width="3.5" />
+    <line x1="242" y1="206" x2="258" y2="206" stroke="#E0F7FA" stroke-width="3.5" />
+    <!-- Kind smile -->
+    <path d="M 235,248 Q 250,260 265,248" fill="none" stroke="#E0F7FA" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+
+  <!-- Horizontal Scanning Lines -->
+  <line x1="60" y1="120" x2="440" y2="120" stroke="#00F2FE" stroke-width="1.5" opacity="0.25" />
+  <line x1="40" y1="180" x2="460" y2="180" stroke="#00F2FE" stroke-width="2" opacity="0.35" />
+  <line x1="30" y1="250" x2="470" y2="250" stroke="#00F2FE" stroke-width="2.5" opacity="0.4" />
+  <line x1="40" y1="320" x2="460" y2="320" stroke="#00F2FE" stroke-width="2" opacity="0.35" />
+  <line x1="60" y1="380" x2="440" y2="380" stroke="#00F2FE" stroke-width="1.5" opacity="0.25" />
+
+  <!-- Digital HUD markers -->
+  <text x="250" y="465" text-anchor="middle" fill="#00F2FE" font-family="'Courier New', monospace" font-size="12" letter-spacing="3" font-weight="700">TONY // SOUL ARCHIVE #042</text>
+  <circle cx="90" cy="90" r="4" fill="#00F2FE" />
+  <circle cx="410" cy="90" r="4" fill="#00F2FE" />
+  <circle cx="90" cy="410" r="4" fill="#00F2FE" />
+  <circle cx="410" cy="410" r="4" fill="#00F2FE" />
+</svg>

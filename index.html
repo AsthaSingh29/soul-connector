@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soul Connector — WebXR Digital Legacy Prototype</title>
+  <meta name="description" content="A consent-based WebXR digital legacy prototype preserving personal memories, voice, and connection in immersive virtual reality.">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- A-Frame WebXR Framework (CDN) -->
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/vr.css">
+</head>
+<body>
+
+  <!-- Ambient Cosmic Glow & Particles -->
+  <div class="cosmic-backdrop"></div>
+  <div class="particles-overlay"></div>
+
+  <!-- App Header & Navigation -->
+  <header class="app-header">
+    <div class="brand-wrapper" title="Back to Soul Connector Home">
+      <div class="brand-icon">✨</div>
+      <span class="brand-title">SOUL CONNECTOR</span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="btn btn-secondary btn-sm btn-open-pitch" title="View Design Thinking Framework & Pitch Deck">
+        <span>🏆 Pitch & Design Thinking</span>
+      </button>
+      <button id="btn-header-preset" class="btn btn-secondary btn-sm" onclick="if(window.app){ window.app.showScene('scene-profile'); }">
+        <span>👤 Tony's Profile</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       MAIN SCENE CONTAINER (Single Page Application Router)
+       ========================================================================= -->
+  <main class="scene-container">
+
+    <!-- =======================================================================
+         SCENE 1: LANDING PAGE
+         ======================================================================= -->
+    <section id="scene-landing" class="scene-view active">
+      <div class="landing-section">
+        <div class="landing-hero">
+          <!-- Holographic Portal Ring Graphic -->
+          <div class="hologram-portal-container">
+            <div class="portal-ring-outer"></div>
+            <div class="portal-ring-inner"></div>
+            <div class="portal-core"></div>
+          </div>
+
+          <h1 class="landing-title">SOUL CONNECTOR</h1>
+          <p class="landing-subtitle">Preserve the moments. Continue the connection.</p>
+
+          <!-- Call to Action Buttons -->
+          <div class="landing-cta-group">
+            <button id="btn-landing-create" class="btn btn-primary">
+              <span>✍️ Create a Soul Profile</span>
+            </button>
+            <button id="btn-landing-enter" class="btn btn-gold">
+              <span>🥽 Enter a Soul Profile</span>
+            </button>
+          </div>
+
+          <!-- Feature Highlights -->
+          <div class="landing-feature-pills">
+            <div class="pill-item"><span class="icon">🛡️</span> Consent-Driven Legacy</div>
+            <div class="pill-item"><span class="icon">🎙️</span> Voice & Story Preservation</div>
+            <div class="pill-item"><span class="icon">🌌</span> Immersive WebXR Chamber</div>
+            <div class="pill-item"><span class="icon">💬</span> Interactive Avatar</div>
+          </div>
+
+          <!-- Ethical Disclaimer Box -->
+          <div class="landing-disclaimer-box">
+            <span class="disclaimer-icon">ℹ️</span>
+            <p class="disclaimer-text">
+              <strong>Ethical Notice:</strong> Soul Connector creates a digital representation from information intentionally shared by the individual during their lifetime. It does not recreate or claim to be the person.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCENE 2: CREATE SOUL PROFILE (TONY'S LEGACY)
+         ======================================================================= -->
+    <section id="scene-profile" class="scene-view">
+      <div class="page-container">
+        <div class="section-header">
+          <div class="section-top-bar">
+            <div>
+              <span class="badge badge-cyan">Step 1 • Profile Creator</span>
+              <h2 class="section-title">Create Soul Profile</h2>
+            </div>
+            <button id="btn-load-preset" type="button" class="btn btn-secondary btn-sm" title="Autofill Tony's demo profile">
+              <span>⚡ Load Demo Preset (Tony)</span>
+            </button>
+          </div>
+          <p class="section-subtitle">Record your stories, cherished memories, and words of wisdom for the people you love.</p>
+        </div>
+
+        <form id="soul-profile-form" class="profile-form-layout">
+          <!-- Card 1: Personal Details -->
+          <div class="glass-panel form-card">
+            <h3 class="form-card-title"><span class="icon">👤</span> Personal Identity</h3>
+            
+            <div class="form-group">
+              <label class="form-label" for="input-name">Name</label>
+              <input id="input-name" class="form-input" type="text" value="Tony" required>
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="input-age">Age</label>
+                <input id="input-age" class="form-input" type="number" value="52" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-relationship">Relationship</label>
+                <input id="input-relationship" class="form-input" type="text" value="Father" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-personality">Personality Traits (comma-separated)</label>
+              <input id="input-personality" class="form-input" type="text" value="Caring, Humorous, Encouraging, Gentle">
+            </div>
+
+            <!-- Voice Recorder Simulation -->
+            <div class="form-group">
+              <label class="form-label">Spoken Voice Sample</label>
+              <div id="voice-recorder-widget" class="voice-recorder-widget">
+                <div class="wave-bars-container">
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                  <div class="wave-bar"></div>
+                </div>
+                <div id="voice-record-status" style="font-size:0.85rem; color:var(--text-muted);">
+                  Click to record a voice message (or sample preset)
+                </div>
+                <div class="record-controls">
+                  <button id="btn-record-voice" type="button" class="btn btn-secondary btn-sm">
+                    <span>🎙️ Record Voice</span>
+                  </button>
+                  <button id="btn-play-voice" type="button" class="btn btn-secondary btn-sm" style="display:inline-flex;">
+                    <span>▶️ Test Audio</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Cherished Memories & Messages -->
+          <div class="glass-panel form-card">
+            <h3 class="form-card-title"><span class="icon">💎</span> Memories & Messages</h3>
+
+            <div class="form-group">
+              <label class="form-label" for="input-fav-place">Favorite Place</label>
+              <input id="input-fav-place" class="form-input" type="text" value="Darjeeling">
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label class="form-label" for="input-fav-food">Favorite Food</label>
+                <input id="input-fav-food" class="form-input" type="text" value="Momos">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-fav-song">Favorite Song</label>
+                <input id="input-fav-song" class="form-input" type="text" value="Stand By Me">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-fav-memory">Favorite Memory</label>
+              <textarea id="input-fav-memory" class="form-textarea">Our family trip to Darjeeling. You were so excited to see the sunrise over Kanchenjunga that you barely slept the night before. We shared steaming plates of momos on Mall Road.</textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-daughter-message">Message for Daughter</label>
+              <textarea id="input-daughter-message" class="form-textarea">Always believe in yourself. No matter where life takes you, I'll always be proud of you.</textarea>
+            </div>
+          </div>
+
+          <!-- Form Actions Footer -->
+          <div class="form-actions-footer">
+            <button type="button" class="btn btn-secondary" onclick="window.app.showScene('scene-landing')">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary">
+              <span>Save & View Memories →</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCENE 3: MEMORY GALLERY
+         ======================================================================= -->
+    <section id="scene-memories" class="scene-view">
+      <div class="page-container">
+        <div class="section-header">
+          <div class="section-top-bar">
+            <div>
+              <span class="badge badge-gold">Step 2 • Legacy Vault</span>
+              <h2 class="section-title">Tony's Memories & Legacy</h2>
+            </div>
+            <button class="btn btn-secondary btn-sm" onclick="window.app.showScene('scene-profile')">
+              <span>✏️ Edit Profile</span>
+            </button>
+          </div>
+          <p class="section-subtitle">These are the moments, stories, and words intentionally preserved by Tony for his family.</p>
+        </div>
+
+        <!-- Dynamic Memory Grid -->
+        <div id="memory-grid-container" class="memory-grid">
+          <!-- Populated by memories.js -->
+        </div>
+
+        <!-- Call to Action Banner to Enter VR -->
+        <div class="gallery-cta-banner">
+          <div class="badge badge-cyan">WebXR Experience Ready</div>
+          <h3>Step Into Tony's Virtual Memory Chamber</h3>
+          <p>Experience an intimate virtual environment surrounded by Tony's cherished photos, warm ambient light, and an interactive digital avatar ready to talk.</p>
+          <button id="btn-enter-vr-room" class="btn btn-gold" style="font-size:1.1rem; padding: 1.1rem 2.4rem;">
+            <span>🥽 Enter VR Memory Room ⭐</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SCENE 4: THE VR EXPERIENCE (A-FRAME WEBXR)
+         ======================================================================= -->
+    <section id="scene-vr" class="scene-view">
+      <div class="vr-experience-container">
+
+        <!-- Top Floating HUD -->
+        <div class="vr-top-hud">
+          <div class="vr-avatar-status">
+            <div class="status-dot"></div>
+            <span class="status-text">TONY ONLINE // MEMORY DATASET ACTIVE</span>
+          </div>
+
+          <div class="vr-controls-group">
+            <button id="vr-audio-toggle" class="audio-toggle-btn" title="Toggle gentle procedural ambient music">
+              <span>🔊 Ambient Audio: Off</span>
+            </button>
+            <button id="vr-goodbye-btn" class="btn btn-secondary btn-sm" style="border-color:var(--border-gold); color:var(--accent-gold);" title="Trigger the emotional farewell finale">
+              <span>💌 Say Goodbye</span>
+            </button>
+            <button id="vr-back-btn" class="btn btn-secondary btn-sm">
+              <span>← Exit VR</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- VR Navigation Hint -->
+        <div class="vr-hint-badge">
+          🖱️ Drag mouse to look • WASD to move • Click question chips to talk
+        </div>
+
+        <!-- A-Frame 3D Scene Wrapper -->
+        <div class="aframe-scene-wrapper">
+          <a-scene embedded vr-mode-ui="enabled: true" renderer="antialias: true; alpha: true;">
+            <!-- Asset Management -->
+            <a-assets>
+              <a-asset-item id="model-avatar-glb" src="assets/models/avatar.glb"></a-asset-item>
+              <img id="img-family-trip" src="assets/images/family-trip.svg">
+              <img id="img-bicycle" src="assets/images/bicycle.svg">
+              <img id="img-family" src="assets/images/family.svg">
+              <img id="img-avatar-holo" src="assets/images/avatar-hologram.svg">
+              <img id="img-momos" src="assets/images/momos.svg">
+            </a-assets>
+
+            <!-- Room Lighting -->
+            <a-entity light="type: ambient; color: #1e2538; intensity: 0.9;"></a-entity>
+            <a-entity light="type: spot; color: #ffe8b2; intensity: 1.8; angle: 45; penumbra: 0.5; distance: 10;" position="0 3.8 0" target="#avatar-pedestal"></a-entity>
+            <a-entity id="vr-avatar-aura-light" light="type: point; color: #00f2fe; intensity: 1.1; distance: 6;" position="0 1.6 -3.0"></a-entity>
+
+            <!-- Warm Candle/Lamp Lights in Corners -->
+            <a-entity light="type: point; color: #f59e0b; intensity: 0.7; distance: 6;" position="-3.2 2 -1"></a-entity>
+            <a-entity light="type: point; color: #f59e0b; intensity: 0.7; distance: 6;" position="3.2 2 -1"></a-entity>
+
+            <!-- Room Architecture (Cozy Sanctuary) -->
+            <!-- Floor (Dark Wood Plank effect) -->
+            <a-plane position="0 0 -2.5" rotation="-90 0 0" width="9" height="9" color="#131722" roughness="0.8" metalness="0.1"></a-plane>
+
+            <!-- Ceiling -->
+            <a-plane position="0 4 -2.5" rotation="90 0 0" width="9" height="9" color="#090d14"></a-plane>
+
+            <!-- Back Wall -->
+            <a-plane position="0 2 -7" width="9" height="4" color="#0d121c" roughness="0.9"></a-plane>
+
+            <!-- Left Wall -->
+            <a-plane position="-4.5 2 -2.5" rotation="0 90 0" width="9" height="4" color="#0c1119" roughness="0.9"></a-plane>
+
+            <!-- Right Wall -->
+            <a-plane position="4.5 2 -2.5" rotation="0 -90 0" width="9" height="4" color="#0c1119" roughness="0.9"></a-plane>
+
+            <!-- Wall Photo Frames (Memories) -->
+            <!-- Left Wall Frame: Darjeeling Family Trip -->
+            <a-entity position="-4.42 2 -2.2" rotation="0 90 0">
+              <a-box width="2.4" height="1.6" depth="0.08" color="#3a2a1d"></a-box>
+              <a-plane position="0 0 0.05" width="2.2" height="1.4" material="src: #img-family-trip; shader: flat;"></a-plane>
+              <a-text value="Darjeeling Sunrise • 2018" align="center" position="0 -0.9 0.05" scale="0.6 0.6 0.6" color="#f6c860"></a-text>
+            </a-entity>
+
+            <!-- Right Wall Frame: First Bicycle Milestone -->
+            <a-entity position="4.42 2 -2.2" rotation="0 -90 0">
+              <a-box width="2.4" height="1.6" depth="0.08" color="#3a2a1d"></a-box>
+              <a-plane position="0 0 0.05" width="2.2" height="1.4" material="src: #img-bicycle; shader: flat;"></a-plane>
+              <a-text value="First Bicycle • 2010" align="center" position="0 -0.9 0.05" scale="0.6 0.6 0.6" color="#f6c860"></a-text>
+            </a-entity>
+
+            <!-- Back Wall Frame: McKenzie Family Portrait -->
+            <a-entity position="0 2.4 -6.92">
+              <a-box width="2.8" height="2.0" depth="0.08" color="#3a2a1d"></a-box>
+              <a-plane position="0 0 0.05" width="2.6" height="1.8" material="src: #img-family; shader: flat;"></a-plane>
+              <a-text value="The McKenzie Family" align="center" position="0 -1.15 0.05" scale="0.7 0.7 0.7" color="#f6c860"></a-text>
+            </a-entity>
+
+            <!-- ===============================================================
+                 CENTERPIECE: TONY'S 3D HOLOGRAPHIC AVATAR MODEL & PEDESTAL
+                 =============================================================== -->
+            <a-entity id="avatar-pedestal" position="0 0 -3">
+              <!-- Hologram Base Pedestal Rings -->
+              <a-cylinder radius="0.9" height="0.1" color="#0b1320" metalness="0.8" roughness="0.2"></a-cylinder>
+              <a-cylinder position="0 0.06 0" radius="0.7" height="0.04" color="#00f2fe" opacity="0.6"></a-cylinder>
+              
+              <!-- Rotating Hologram Emitter Ring -->
+              <a-ring position="0 0.09 0" rotation="-90 0 0" radius-inner="0.75" radius-outer="0.82" color="#00f2fe" opacity="0.8"
+                      animation="property: rotation; to: -90 360 0; dur: 8000; easing: linear; loop: true"></a-ring>
+
+              <!-- 3D Holographic Avatar Entity -->
+              <a-entity id="vr-hologram-avatar" position="0 0 0"
+                        animation__hover="property: position; to: 0 0.04 0; dir: alternate; dur: 2600; easing: easeInOutSine; loop: true">
+                
+                <!-- The 3D Tony Stark Model extracted from tony-stark.zip -->
+                <a-gltf-model id="tony-3d-mesh" src="#model-avatar-glb" position="0 0.98 0" scale="0.78 0.78 0.78" rotation="0 0 0"
+                              animation__subtlerot="property: rotation; to: 0 3 0; dir: alternate; dur: 4500; easing: easeInOutQuad; loop: true">
+                </a-gltf-model>
+
+                <!-- Floating Golden Halo Ring above Tony's head -->
+                <a-ring position="0 1.95 0" rotation="-90 0 0" radius-inner="0.34" radius-outer="0.38" color="#f6c860" opacity="0.75"
+                        animation="property: rotation; to: -90 360 0; dur: 7000; easing: linear; loop: true"></a-ring>
+
+                <!-- Hologram Base Vertical Light Beam -->
+                <a-cylinder position="0 0.95 0" radius="0.6" height="2.0" color="#00f2fe" opacity="0.06" open-ended="true"></a-cylinder>
+              </a-entity>
+            </a-entity>
+
+            <!-- Floating Ambient Dust Particles in Room -->
+            <a-entity position="0 1.5 -2.5">
+              <a-sphere position="-1.2 0.5 -0.5" radius="0.02" color="#ffe8b2" opacity="0.7" animation="property: position; to: -1.2 0.8 -0.5; dir: alternate; dur: 3000; loop: true"></a-sphere>
+              <a-sphere position="1.4 0.2 -0.8" radius="0.015" color="#00f2fe" opacity="0.6" animation="property: position; to: 1.4 0.5 -0.8; dir: alternate; dur: 2500; loop: true"></a-sphere>
+              <a-sphere position="-0.4 1.2 -1.2" radius="0.02" color="#ffe8b2" opacity="0.8" animation="property: position; to: -0.4 0.9 -1.2; dir: alternate; dur: 3200; loop: true"></a-sphere>
+              <a-sphere position="0.8 1.4 -0.4" radius="0.018" color="#00f2fe" opacity="0.7" animation="property: position; to: 0.8 1.1 -0.4; dir: alternate; dur: 2800; loop: true"></a-sphere>
+            </a-entity>
+
+            <!-- Camera Rig with Cursor Raycaster -->
+            <a-entity id="cameraRig" position="0 1.6 0">
+              <a-camera look-controls="pointerLockEnabled: false" wasd-controls="acceleration: 20">
+                <a-cursor fuse="false" color="#00f2fe" raycaster="objects: .clickable" opacity="0.6" scale="0.7 0.7 0.7"></a-cursor>
+              </a-camera>
+            </a-entity>
+          </a-scene>
+        </div>
+
+        <!-- ===============================================================
+             BOTTOM FLOATING DIALOGUE HUD
+             =============================================================== -->
+        <div class="vr-dialogue-panel">
+          <div class="dialogue-content">
+            <div class="dialogue-avatar-thumb">
+              <img src="assets/images/avatar-hologram.svg" alt="Tony Avatar">
+            </div>
+            <div class="dialogue-bubble-box">
+              <div class="dialogue-speaker-name">
+                <span>TONY • DIGITAL AVATAR</span>
+                <span class="badge badge-cyan" style="font-size:0.65rem; padding:0.15rem 0.5rem;">Controlled Memory Engine</span>
+              </div>
+              <p id="vr-dialogue-text" class="dialogue-text">
+                "Hey... you're finally here. It's so good to see you. Take your time, look around, and let's catch up."
+              </p>
+              <div id="vr-dialogue-thinking" class="dialogue-thinking">
+                <span>Recalling memory</span>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Preset Question Chips Row -->
+          <div id="vr-question-chips" class="question-chips-row">
+            <button class="chip-btn" data-query="What was our favorite trip?">
+              <span>✈️ Favorite Trip?</span>
+            </button>
+            <button class="chip-btn" data-query="What did you always tell me?">
+              <span>💡 What did you always tell me?</span>
+            </button>
+            <button class="chip-btn" data-query="What are you proud of?">
+              <span>❤️ What are you proud of?</span>
+            </button>
+            <button class="chip-btn" data-query="What was your favorite food?">
+              <span>🥟 Favorite Food?</span>
+            </button>
+            <button class="chip-btn" data-query="Do you remember the day I learned to ride a bike?">
+              <span>🚲 Learning to ride a bike</span>
+            </button>
+            <button class="chip-btn" data-query="What was your favorite song?">
+              <span>🎵 Favorite Song?</span>
+            </button>
+            <button class="chip-btn" data-query="I really miss you.">
+              <span>🫂 I miss you</span>
+            </button>
+          </div>
+
+          <!-- Custom Query Input Bar -->
+          <div class="dialogue-input-bar">
+            <button id="vr-mic-btn" type="button" class="mic-btn" title="Ask with microphone">
+              <span>🎙️</span>
+            </button>
+            <input id="vr-query-input" type="text" placeholder="Ask Tony anything from his memories (e.g., 'What was our favorite trip?')...">
+            <button id="vr-send-btn" type="button" class="btn btn-primary send-btn">
+              <span>Ask Tony</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       SCENE 5: THE EMOTIONAL FINALE (CINEMATIC WOW MOMENT)
+       ========================================================================= -->
+  <div id="finale-overlay" class="finale-overlay">
+    <div class="finale-sequence-box">
+      <!-- Dissolving Avatar -->
+      <div id="finale-avatar-img" class="finale-avatar-dissolve">
+        <img src="assets/images/avatar-hologram.svg" alt="Tony Dissolving">
+      </div>
+
+      <!-- Spoken Farewell Lines -->
+      <div class="farewell-quote-container">
+        <p id="farewell-line-1" class="farewell-line-1"></p>
+        <p id="farewell-line-2" class="farewell-line-2"></p>
+      </div>
+
+      <!-- Impact Takeaway Card -->
+      <div id="finale-punchline-card" class="finale-punchline-card">
+        <h2 class="finale-title">SOUL CONNECTOR</h2>
+        <p class="finale-mantra">Some connections don't need a physical presence.</p>
+        
+        <div class="legacy-boundary-statement">
+          <strong>Digital legacy ≠ replacing a person.</strong><br>
+          It preserves what they chose to leave behind.
+        </div>
+
+        <div class="finale-action-buttons">
+          <button id="btn-reenter-vr" class="btn btn-gold">
+            <span>🔄 Re-enter VR Room</span>
+          </button>
+          <button id="btn-finale-pitch" class="btn btn-primary">
+            <span>🏆 View Design Thinking & Pitch Deck</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: MEMORY CARD INSPECTION
+       ========================================================================= -->
+  <div id="memory-modal" class="modal-memory">
+    <div class="memory-modal-dialog">
+      <button class="pitch-close-btn modal-close-btn" style="top:1rem; right:1rem;">✕</button>
+      <div class="memory-modal-img">
+        <img class="modal-mem-img" src="" alt="Memory Image">
+      </div>
+      <div class="memory-modal-content">
+        <span class="modal-mem-date" style="font-size:0.85rem; color:var(--accent-gold); font-weight:600;"></span>
+        <h3 class="modal-mem-title" style="font-size:1.4rem; color:#fff;"></h3>
+        <p class="modal-mem-desc" style="color:var(--text-muted); line-height:1.6;"></p>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.8rem;">
+          <button class="btn btn-secondary btn-sm modal-play-audio" style="display:none;">
+            <span>🔊 Speak Memory</span>
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('memory-modal').classList.remove('active'); window.app.showScene('scene-vr');">
+            <span>Visit in VR ↗</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: DESIGN THINKING FRAMEWORK & 2-MINUTE PITCH DECK
+       ========================================================================= -->
+  <div id="modal-pitch-deck" class="modal-pitch">
+    <div class="pitch-content">
+      <button id="pitch-close-btn" class="pitch-close-btn">✕</button>
+
+      <div style="display:flex; align-items:center; gap:0.6rem; margin-bottom:0.4rem;">
+        <span class="badge badge-cyan">YISL Workshop Presentation</span>
+        <span class="badge badge-gold">Design Thinking Framework</span>
+      </div>
+
+      <h2 style="font-size: 1.8rem; color:#fff;">Soul Connector — Workshop Pitch & Architecture</h2>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-top:0.3rem;">
+        Complete breakdown of the 5-stage Design Thinking process, technical architecture, and the exact 2-minute pitch script.
+      </p>
+
+      <!-- 5-Step Design Thinking Flow -->
+      <h3 style="font-size:1.1rem; color:#fff; margin-top: 1.8rem;">📐 1. Design Thinking Sequence</h3>
+      <div class="dt-framework-grid">
+        <div class="dt-step-card">
+          <div class="dt-step-num">STAGE 01</div>
+          <div class="dt-step-title">EMPATHIZE</div>
+          <p class="dt-step-desc">Grief leaves unanswered questions, unshared memories, and lost personal voices.</p>
+        </div>
+
+        <div class="dt-step-card">
+          <div class="dt-step-num">STAGE 02</div>
+          <div class="dt-step-title">DEFINE</div>
+          <p class="dt-step-desc">How might we preserve meaningful connection without claiming to replace the person?</p>
+        </div>
+
+        <div class="dt-step-card">
+          <div class="dt-step-num">STAGE 03</div>
+          <div class="dt-step-title">IDEATE</div>
+          <p class="dt-step-desc">Consent-based interactive digital legacy vault combined with spatial memory room.</p>
+        </div>
+
+        <div class="dt-step-card active-step">
+          <div class="dt-step-num">STAGE 04</div>
+          <div class="dt-step-title">PROTOTYPE</div>
+          <p class="dt-step-desc">Soul Connector: WebXR A-Frame chamber with keyword memory AI & holographic avatar.</p>
+        </div>
+
+        <div class="dt-step-card">
+          <div class="dt-step-num">STAGE 05</div>
+          <div class="dt-step-title">TEST</div>
+          <p class="dt-step-desc">Loved one speaks to Tony, asks questions about Darjeeling, and experiences closure.</p>
+        </div>
+      </div>
+
+      <!-- 2-Minute Pitch Breakdown -->
+      <h3 style="font-size:1.1rem; color:#fff; margin-top: 2rem;">⏱️ 2. The 2-Minute Pitch Breakdown</h3>
+      <div class="pitch-timeline">
+        <div class="pitch-block">
+          <div class="pitch-time">0:00 – 0:20</div>
+          <div class="pitch-text">
+            <strong>The Problem:</strong>
+            <div class="pitch-quote">“When someone we love passes away, we don't only lose their physical presence. We lose the ability to ask them questions, hear their stories and revisit the little moments that made them who they were.”</div>
+          </div>
+        </div>
+
+        <div class="pitch-block">
+          <div class="pitch-time">0:20 – 0:40</div>
+          <div class="pitch-text">
+            <strong>The Solution:</strong>
+            <div class="pitch-quote">“Soul Connector is a consent-based digital legacy platform where people can intentionally preserve their memories, voice, stories and messages during their lifetime.”</div>
+          </div>
+        </div>
+
+        <div class="pitch-block">
+          <div class="pitch-time">0:40 – 1:20</div>
+          <div class="pitch-text">
+            <strong>The Live Demo:</strong>
+            <div class="pitch-quote">Show Tony’s Profile → Memory Gallery → Enter VR Memory Room → Ask: “What was our favorite trip?” → Tony responds with Darjeeling memory and speech synthesis.</div>
+          </div>
+        </div>
+
+        <div class="pitch-block">
+          <div class="pitch-time">1:20 – 1:40</div>
+          <div class="pitch-text">
+            <strong>The Empathy Boundary:</strong>
+            <div class="pitch-quote">“Our goal isn't to recreate someone who has passed away. It's to preserve the connection they intentionally chose to leave behind.”</div>
+          </div>
+        </div>
+
+        <div class="pitch-block">
+          <div class="pitch-time">1:40 – 2:00</div>
+          <div class="pitch-text">
+            <strong>The Future & Finale:</strong>
+            <div class="pitch-quote">Trigger 'Say Goodbye' → Tony delivers farewell monologue → Display: “Digital legacy ≠ replacing a person. It preserves what they chose to leave behind.”</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Architecture Note for Judges -->
+      <div style="margin-top:2rem; padding:1.2rem; background:rgba(0, 242, 254, 0.05); border:1px solid var(--border-cyan); border-radius:var(--radius-md);">
+        <h4 style="color:var(--holo-cyan); margin-bottom:0.4rem;">💡 Judge's Technical Note</h4>
+        <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.5;">
+          “For today's prototype, the conversational layer uses a controlled memory dataset and keyword intent matching with Web Speech synthesis. The production roadmap integrates LLM retrieval-augmented generation (RAG) over encrypted personal memory vectors, while preserving strict authenticity and consent boundaries.”
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Bootstrap (ES6 Module) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "name": "Tony",
+  "age": 52,
+  "relationship": "Father",
+  "personality": [
+    "caring",
+    "humorous",
+    "encouraging",
+    "gentle"
+  ],
+  "tagline": "Always keep moving forward, and never forget where you came from.",
+  "memories": [
+    {
+      "id": "mem-1",
+      "title": "Family Trip to Darjeeling",
+      "category": "travel",
+      "date": "Summer 2018",
+      "description": "Our unforgettable family trip to Darjeeling. You were so excited to see the sunrise over Kanchenjunga that you barely slept the night before. We shared steaming plates of momos on Mall Road while wrapped in woolen shawls.",
+      "image": "assets/images/family-trip.svg",
+      "tags": ["travel", "mountains", "darjeeling", "momos"]
+    },
+    {
+      "id": "mem-2",
+      "title": "Teaching You to Ride a Bicycle",
+      "category": "milestone",
+      "date": "Autumn 2010",
+      "description": "The golden afternoon in our neighborhood park when we took off your training wheels. You were terrified, but I held onto the seat until suddenly I let go—and you looked back grinning, realizing you were flying on your own.",
+      "image": "assets/images/bicycle.svg",
+      "tags": ["bicycle", "park", "childhood", "milestone"]
+    },
+    {
+      "id": "mem-3",
+      "title": "Favorite Comfort Food: Momos",
+      "category": "lifestyle",
+      "date": "Lifelong tradition",
+      "description": "Whenever Sunday rolled around or the rain poured outside, we'd gather in the kitchen making steaming hot chicken and veg momos with extra spicy red chili chutney.",
+      "image": "assets/images/momos.svg",
+      "tags": ["food", "momos", "cooking", "comfort"]
+    },
+    {
+      "id": "mem-4",
+      "title": "Favorite Song: 'Stand By Me'",
+      "category": "music",
+      "date": "Every road trip",
+      "description": "'When the night has come, and the land is dark...' This song played on cassette and then Bluetooth every single time we drove out to the hills.",
+      "image": "assets/images/music.svg",
+      "tags": ["song", "music", "roadtrip"]
+    }
+  ],
+  "messages": [
+    {
+      "keywords": ["trip", "darjeeling", "vacation", "holiday", "travel", "mountain"],
+      "question": "What was our favorite trip?",
+      "answer": "Our Darjeeling trip. You were so excited to see the snow peaks that you barely slept the night before. And remember those steaming plates of momos at Mall Road? Nothing tasted better."
+    },
+    {
+      "keywords": ["proud", "accomplish", "proud of", "achievement"],
+      "question": "What are you proud of?",
+      "answer": "I have always been proud of the person you've become. Not just the big wins, but the kindness, honesty, and courage you show every single day."
+    },
+    {
+      "keywords": ["tell", "always tell", "advice", "wisdom", "remember", "life lesson", "believe"],
+      "question": "What did you always tell me?",
+      "answer": "I always told you: 'Always believe in yourself. No matter where life takes you or how stormy the sea gets, keep your head high. You have everything you need inside you.'"
+    },
+    {
+      "keywords": ["food", "eat", "momo", "cook", "hungry", "dish", "favorite food"],
+      "question": "What was your favorite food?",
+      "answer": "Steaming hot Darjeeling momos with that fiery homemade red chili chutney! Especially when we all made them together on rainy Sunday afternoons."
+    },
+    {
+      "keywords": ["bike", "bicycle", "park", "ride", "fall", "riding"],
+      "question": "Do you remember the day I learned to ride a bike?",
+      "answer": "How could I forget? You were clinging to the handlebars terrified. When I quietly let go of the saddle and you kept pedaling all across the green, your smile lit up the entire park."
+    },
+    {
+      "keywords": ["music", "song", "listen", "sing"],
+      "question": "What was your favorite song?",
+      "answer": "'Stand By Me'. Every single time we were in the car hitting the highway, we would blast it and sing along off-key together."
+    },
+    {
+      "keywords": ["miss", "sad", "crying", "alone", "lonely", "grief", "hard"],
+      "question": "I really miss you.",
+      "answer": "I know, sweetheart. Grief is just love with nowhere to go. Whenever you miss me, look at the night sky or remember the laughter we shared. I'm right here in your memories."
+    },
+    {
+      "keywords": ["hello", "hi", "hey", "how are you", "there"],
+      "question": "Hey Tony...",
+      "answer": "Hey... you're finally here. It's so good to see you. Take your time, look around, and let's catch up."
+    }
+  ],
+  "daughterMessage": "Always believe in yourself. No matter where life takes you, I'll always be proud of you.",
+  "farewell": {
+    "line1": "I may not be able to walk beside you anymore...",
+    "pauseMs": 1800,
+    "line2": "...but I wanted to leave you something you could always return to."
+  }
+}

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="frameGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3A2C21" />
+      <stop offset="50%" stop-color="#5E4734" />
+      <stop offset="100%" stop-color="#241B14" />
+    </linearGradient>
+    <linearGradient id="warmLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5EB" />
+      <stop offset="60%" stop-color="#FFDFC2" />
+      <stop offset="100%" stop-color="#E6B894" />
+    </linearGradient>
+  </defs>
+
+  <!-- Ornate Photo Frame Outer -->
+  <rect width="600" height="450" rx="8" fill="url(#frameGrad)" />
+  <rect x="18" y="18" width="564" height="414" rx="4" fill="none" stroke="#D4AF37" stroke-width="3" opacity="0.7" />
+
+  <!-- Inner Matting & Photo -->
+  <rect x="36" y="36" width="528" height="378" fill="url(#warmLight)" />
+
+  <!-- Soft nostalgic vignette inside photo -->
+  <circle cx="300" cy="220" r="220" fill="#FFF" opacity="0.3" />
+
+  <!-- Family Silhouette (Father, Mother, Daughter) -->
+  <g transform="translate(190, 140)" fill="#3B2A22">
+    <!-- Father (Left) -->
+    <circle cx="50" cy="45" r="20" />
+    <path d="M 28,68 C 24,90 20,150 20,180 L 80,180 C 80,150 76,90 72,68 Z" />
+    <!-- Arm around mother/daughter -->
+    <path d="M 68,80 C 85,90 105,95 120,95 L 118,105 C 100,105 80,98 64,88 Z" />
+
+    <!-- Mother (Right) -->
+    <circle cx="170" cy="50" r="18" />
+    <path d="M 148,72 C 145,95 140,150 140,180 L 196,180 C 196,150 192,95 188,72 Z" />
+
+    <!-- Daughter (Center, smaller) -->
+    <circle cx="110" cy="95" r="15" />
+    <path d="M 94,115 C 92,130 90,165 90,180 L 130,180 C 130,165 128,130 126,115 Z" />
+  </g>
+
+  <!-- Golden Plate Caption -->
+  <rect x="200" y="386" width="200" height="22" rx="4" fill="#D4AF37" />
+  <text x="300" y="401" text-anchor="middle" fill="#241B14" font-family="'Georgia', serif" font-size="11" font-weight="700" letter-spacing="1">THE MCKENZIE FAMILY • 2015</text>
+</svg>

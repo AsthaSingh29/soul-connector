@@ -1,0 +1,340 @@
+/* ==========================================================================
+   SCENE 2 & 3: SOUL PROFILE CREATION & MEMORY GALLERY STYLES
+   ========================================================================== */
+
+.page-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 5rem;
+}
+
+.section-header {
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.section-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SCENE 2: FORM STYLING
+   ========================================================================== */
+.profile-form-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 860px) {
+  .profile-form-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-card {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: 1px solid var(--border-glass);
+  padding-bottom: 0.8rem;
+}
+
+.form-card-title .icon {
+  color: var(--holo-cyan);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.3px;
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  background: rgba(10, 14, 22, 0.7);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--holo-cyan);
+  box-shadow: 0 0 12px var(--holo-cyan-glow);
+  background: rgba(15, 23, 42, 0.9);
+}
+
+.form-textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+/* Voice Recorder Box */
+.voice-recorder-widget {
+  background: rgba(8, 12, 19, 0.6);
+  border: 1px dashed var(--border-cyan);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.wave-bars-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 46px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.wave-bar {
+  flex: 1;
+  background: var(--holo-cyan);
+  border-radius: 4px;
+  height: 8px;
+  transition: height 0.15s ease;
+  opacity: 0.5;
+}
+
+.voice-recorder-widget.recording .wave-bar {
+  opacity: 1;
+  animation: waveDance 0.8s ease-in-out infinite alternate;
+}
+
+.voice-recorder-widget.recording .wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.voice-recorder-widget.recording .wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.voice-recorder-widget.recording .wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.voice-recorder-widget.recording .wave-bar:nth-child(5) { animation-delay: 0.15s; }
+.voice-recorder-widget.recording .wave-bar:nth-child(6) { animation-delay: 0.25s; }
+.voice-recorder-widget.recording .wave-bar:nth-child(7) { animation-delay: 0.05s; }
+
+@keyframes waveDance {
+  0% { height: 6px; }
+  100% { height: 40px; }
+}
+
+.record-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Form Action Bar */
+.form-actions-footer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ==========================================================================
+   SCENE 3: MEMORY GALLERY STYLES
+   ========================================================================== */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.8rem;
+  margin-bottom: 3rem;
+}
+
+.memory-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.memory-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--border-cyan);
+  box-shadow: 0 12px 30px rgba(0, 242, 254, 0.15);
+}
+
+.memory-card-media {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  background: #090e17;
+  overflow: hidden;
+}
+
+.memory-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.memory-card:hover .memory-card-media img {
+  transform: scale(1.05);
+}
+
+.memory-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.memory-card-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.memory-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.memory-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.memory-card-footer {
+  margin-top: auto;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.memory-view-link {
+  color: var(--holo-cyan);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Gallery CTA Banner */
+.gallery-cta-banner {
+  background: linear-gradient(135deg, rgba(13, 27, 42, 0.85), rgba(7, 18, 33, 0.95));
+  border: 1px solid var(--border-cyan);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  text-align: center;
+  box-shadow: 0 0 35px rgba(0, 242, 254, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.gallery-cta-banner h3 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.gallery-cta-banner p {
+  max-width: 600px;
+  color: var(--text-muted);
+}
+
+/* Modal for viewing single memory */
+.modal-memory {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 11, 0.88);
+  backdrop-filter: blur(14px);
+  z-index: 250;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.modal-memory.active {
+  display: flex;
+}
+
+.memory-modal-dialog {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  max-width: 640px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.memory-modal-img {
+  width: 100%;
+  height: 260px;
+  background: #090e17;
+}
+
+.memory-modal-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memory-modal-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
