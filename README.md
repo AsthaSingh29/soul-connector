@@ -13,6 +13,8 @@
 > **Digital legacy ≠ replacing a person.**  
 > **It preserves what they chose to leave behind.**
 
+🌐 **Live Demo (GitHub Pages)**: [https://ashtasingh29.github.io/soul-connector/](https://ashtasingh29.github.io/soul-connector/)
+
 ---
 
 ## 📐 Design Thinking Framework
